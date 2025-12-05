@@ -1,12 +1,25 @@
- Voice Medication Assistant with Murf Falcon & ASR
+Murf_Ai
+AI-powered Voice Generation & Text-to-Speech System
 
-This is a voice-driven application that:
-- Lets users speak or spell a medicine name and get spoken info about its use
-- Allows users to set voice-based reminders (e.g., for medicine or meetings)
-- Responds in real time using Murf Falcon Text-to-Speech
-- Uses Deepgram for speech-to-text transcription
+Murf_Ai is an intelligent TTS (Text-to-Speech) solution that converts written text into expressive, high-quality speech — useful for content creators, accessibility tools, chatbots, and more.
+
+Overview
+Murf_Ai enables:
+- Natural and expressive **text-to-speech**
+- Support for **multiple voices & styles** (*extendable*)
+- Fast and scalable **audio generation**
+- Integration-friendly **Python API**
 
 
-# Murf_Ai
-A voice-based AI assistant using Deepgram STT and Murf Falcon TTS, designed for fast medical info and natural conversations. It listens to voice queries, fetches medicine uses, dosage, and side effects from a JSON database, and replies in smooth human-like speech through a Flask backend.
+##Technology Stack
+Backend, Python, AI / ML, (Add: TensorFlow/PyTorch), Audio, pydub/soundfile/,
+API, Flask/FastAPI (if applicable),Deployment, Local runtime/Cloud-ready.
+
+
+Project Setup
+ Clone the Repository
+git clone https://github.com/shivaayc/Murf_Ai.git
+cd Murf_Ai
+
+ 
 
