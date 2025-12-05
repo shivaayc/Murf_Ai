@@ -1,0 +1,16 @@
+generic_name,brand_name,company,form,strength,price_range
+Paracetamol,Crocin,GSK,Tablet,500mg,Low
+Paracetamol,Calpol,GSK,Syrup,125mg/5ml,Medium
+Paracetamol,Tylenol,Johnson & Johnson,Tablet,650mg,High
+Paracetamol,Dolo,Micro Labs,Tablet,650mg,Low
+Ibuprofen,Brufen,Abbott,Tablet,400mg,Medium
+Ibuprofen,Advil,Pfizer,Tablet,200mg,High
+Ibuprofen,Motrin,Johnson & Johnson,Tablet,400mg,Medium
+Cetirizine,Zyrtec,Johnson & Johnson,Tablet,10mg,High
+Cetirizine,Cetrizet,Dr. Reddy's,Tablet,10mg,Low
+Metformin,Glucophage,Merck,Tablet,500mg,Medium
+Aspirin,Disprin,Reckitt,Tablet,350mg,Low
+Aspirin,Ecosprin,USV,Tablet,75mg,Low
+Amoxicillin,Amoxil,GSK,Capsule,500mg,Medium
+Omeprazole,Losec,AstraZeneca,Capsule,20mg,High
+Atorvastatin,Lipitor,Pfizer,Tablet,10mg,High

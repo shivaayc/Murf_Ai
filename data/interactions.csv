@@ -1,0 +1,12 @@
+medicine1,medicine2,severity,effect,recommendation,mechanism
+Paracetamol,Alcohol,High,Increased risk of liver damage,Avoid or limit alcohol consumption,Induces CYP2E1 leading to toxic metabolite
+Ibuprofen,Alcohol,High,Increased risk of stomach bleeding,Avoid alcohol while taking ibuprofen,Synergistic GI irritation
+Aspirin,Ibuprofen,Moderate,Reduced cardioprotective effect of aspirin,Take ibuprofen at least 2 hours before or after aspirin,Competitive inhibition of platelet COX-1
+Metformin,Alcohol,High,Risk of lactic acidosis,Avoid excessive alcohol consumption,Inhibits gluconeogenesis; increases lactate
+Cetirizine,Alcohol,Moderate,Increased drowsiness,Use caution when driving or operating machinery,Additive CNS depression
+Warfarin,Paracetamol,Moderate,Increased bleeding risk,Monitor INR regularly; limit paracetamol dose,Enhanced anticoagulant effect
+Warfarin,Aspirin,High,Severe bleeding risk,Avoid combination unless prescribed; monitor INR,Synergistic antiplatelet and anticoagulant
+Metformin,Contrast dye,High,Risk of lactic acidosis,Stop metformin before contrast studies; restart after 48 hours,Reduced renal excretion
+Omeprazole,Clopidogrel,High,Reduced antiplatelet effect,Avoid combination; use pantoprazole instead,Inhibits CYP2C19 activation of clopidogrel
+Atorvastatin,Grapefruit juice,Moderate,Increased statin side effects,Avoid grapefruit juice or limit consumption,Inhibits CYP3A4 metabolism
+Levothyroxine,Calcium,Moderate,Reduced levothyroxine absorption,Take levothyroxine 4 hours before calcium,Calcium binds levothyroxine in gut

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediVoice AI - Simple Version</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; 
+            color: #333;
+            padding: 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { 
+            text-align: center; 
+            color: white; 
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+        }
+        .logo { font-size: 4rem; margin-bottom: 20px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .card { 
+            background: white; 
+            border-radius: 15px; 
+            padding: 25px; 
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn { 
+            background: #4a6ee0; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            border-radius: 50px; 
+            font-size: 1.1rem; 
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+        .btn:hover { background: #3a5ed0; }
+        .btn-danger { background: #e74c3c; }
+        .btn-danger:hover { background: #c0392b; }
+        .btn-listening { 
+            background: #e91e63; 
+            animation: pulse 1.5s infinite; 
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .btn-group { display: flex; gap: 15px; margin: 20px 0; }
+        .chat-log { 
+            height: 300px; 
+            overflow-y: auto; 
+            background: #f8f9fa; 
+            border-radius: 10px; 
+            padding: 15px; 
+            margin: 20px 0; 
+            border: 1px solid #ddd;
+        }
+        .message { 
+            margin-bottom: 10px; 
+            padding: 10px 15px; 
+            border-radius: 10px; 
+            max-width: 80%; 
+        }
+        .message.user { 
+            background: #4a6ee0; 
+            color: white; 
+            margin-left: auto;
+        }
+        .message.assistant { 
+            background: #e3f2fd; 
+            color: #333; 
+            margin-right: auto;
+        }
+        .audio-player { width: 100%; margin: 15px 0; }
+        .status { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            padding: 10px; 
+            background: rgba(74, 110, 224, 0.1); 
+            border-radius: 10px; 
+            margin: 15px 0;
+        }
+        .status-dot { 
+            width: 12px; 
+            height: 12px; 
+            border-radius: 50%; 
+            background: #2ecc71;
+            animation: blink 2s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid #ddd; 
+            border-radius: 8px; 
+            margin: 10px 0;
+        }
+        .quick-actions { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            margin: 15px 0;
+        }
+        .quick-btn { 
+            padding: 10px; 
+            background: rgba(74, 110, 224, 0.1); 
+            border: 1px solid rgba(74, 110, 224, 0.2); 
+            border-radius: 8px; 
+            cursor: pointer;
+            text-align: center;
+        }
+        .quick-btn:hover { background: rgba(74, 110, 224, 0.2); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🤖💊</div>
+            <h1>MediVoice AI</h1>
+            <p>Voice Medicine Assistant (Simplified)</p>
+        </div>
+        
+        <div class="card">
+            <h2>🎤 Voice Assistant</h2>
+            <div class="btn-group">
+                <button id="startBtn" class="btn">🎤 Start Speaking</button>
+                <button id="stopBtn" class="btn btn-danger" disabled>⏹️ Stop</button>
+            </div>
+            
+            <div class="status">
+                <div id="statusDot" class="status-dot"></div>
+                <span id="statusText">Connecting...</span>
+            </div>
+            
+            <div class="chat-log" id="chatLog">
+                <div class="message assistant">
+                    Hello! I'm MediVoice AI. I can help with medicine information, reminders, and interactions.
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <div class="quick-btn" onclick="speakCommand('What is paracetamol?')">💊 Paracetamol</div>
+                <div class="quick-btn" onclick="speakCommand('Set reminder for 3 PM')">⏰ Set Reminder</div>
+                <div class="quick-btn" onclick="speakCommand('Check interaction')">⚠️ Interactions</div>
+                <div class="quick-btn" onclick="speakCommand('List medicines')">📋 List Medicines</div>
+            </div>
+            
+            <audio id="responseAudio" class="audio-player" controls></audio>
+        </div>
+        
+        <div class="card">
+            <h2>⚙️ Controls</h2>
+            <input type="time" id="reminderTime" value="15:00">
+            <textarea id="reminderMessage" placeholder="Message">Take medicine</textarea>
+            <button class="btn" onclick="setManualReminder()">⏰ Set Manual Reminder</button>
+        </div>
+        
+        <div class="card">
+            <h2>📊 System Status</h2>
+            <div id="systemStatus">
+                <p>Medicines in database: <span id="medicineCount">Loading...</span></p>
+                <p>Voice status: <span id="voiceStatus">Checking...</span></p>
+                <p>Active reminders: <span id="reminderCount">0</span></p>
+            </div>
+            <button class="btn" onclick="checkSystemStatus()">🔄 Refresh Status</button>
+        </div>
+    </div>
+
+    <script>
+        let mediaRecorder, audioChunks = [], isRecording = false, socket;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            connectWebSocket();
+            checkSystemStatus();
+        });
+        
+        function connectWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}/ws`;
+            
+            socket = new WebSocket(wsUrl);
+            socket.onopen = () => updateStatus(true, 'Connected');
+            socket.onclose = () => {
+                updateStatus(false, 'Disconnected');
+                setTimeout(connectWebSocket, 3000);
+            };
+            socket.onmessage = async (event) => {
+                if (event.data instanceof Blob) {
+                    const audioUrl = URL.createObjectURL(event.data);
+                    document.getElementById('responseAudio').src = audioUrl;
+                    document.getElementById('responseAudio').play();
+                } else {
+                    try {
+                        const data = JSON.parse(event.data);
+                        handleMessage(data);
+                    } catch(e) { console.log('Non-JSON:', event.data); }
+                }
+            };
+        }
+        
+        function updateStatus(connected, message) {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            dot.style.background = connected ? '#2ecc71' : '#e74c3c';
+            text.textContent = message;
+            document.getElementById('voiceStatus').textContent = connected ? 'Connected' : 'Disconnected';
+        }
+        
+        async function startRecording() {
+            if (isRecording) return;
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+                mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    if (socket?.readyState === WebSocket.OPEN) {
+                        const reader = new FileReader();
+                        reader.onload = () => socket.send(reader.result);
+                        reader.readAsArrayBuffer(audioBlob);
+                    }
+                    stream.getTracks().forEach(track => track.stop());
+                };
+                mediaRecorder.start();
+                isRecording = true;
+                document.getElementById('startBtn').classList.add('btn-listening');
+                document.getElementById('startBtn').textContent = '🎤 Listening...';
+                document.getElementById('stopBtn').disabled = false;
+                addMessage('Listening...', 'user');
+            } catch (error) {
+                console.error('Microphone error:', error);
+                addMessage('Error: Microphone access denied', 'assistant');
+            }
+        }
+        
+        function stopRecording() {
+            if (mediaRecorder && isRecording) {
+                mediaRecorder.stop();
+                isRecording = false;
+                document.getElementById('startBtn').classList.remove('btn-listening');
+                document.getElementById('startBtn').textContent = '🎤 Start Speaking';
+                document.getElementById('stopBtn').disabled = true;
+            }
+        }
+        
+        function handleMessage(data) {
+            switch(data.type) {
+                case 'welcome':
+                case 'response':
+                    addMessage(data.text, 'assistant');
+                    break;
+                case 'transcription':
+                    updateLastMessage(data.text, 'user');
+                    break;
+                case 'reminder':
+                    addMessage(data.message, 'assistant');
+                    break;
+                case 'error':
+                    addMessage(data.text, 'assistant');
+                    break;
+            }
+        }
+        
+        function addMessage(text, sender) {
+            const chatLog = document.getElementById('chatLog');
+            const msg = document.createElement('div');
+            msg.className = `message ${sender}`;
+            msg.textContent = text;
+            chatLog.appendChild(msg);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }
+        
+        function updateLastMessage(text, sender) {
+            const messages = document.getElementById('chatLog').getElementsByClassName('message');
+            if (messages.length > 0) {
+                const last = messages[messages.length - 1];
+                if (last.classList.contains(sender)) {
+                    last.textContent = text;
+                    return;
+                }
+            }
+            addMessage(text, sender);
+        }
+        
+        function speakCommand(command) {
+            addMessage(command, 'user');
+            fetch('/api/query', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({query: command})
+            }).then(r => r.json()).then(data => {
+                if (data.success) {
+                    addMessage(data.response_text || data.response, 'assistant');
+                    if (data.audio_url) {
+                        document.getElementById('responseAudio').src = data.audio_url;
+                        document.getElementById('responseAudio').play();
+                    }
+                }
+            });
+        }
+        
+        async function checkSystemStatus() {
+            try {
+                const res = await fetch('/api/health');
+                const data = await res.json();
+                document.getElementById('medicineCount').textContent = data.data.medicines;
+                document.getElementById('reminderCount').textContent = data.data.reminders;
+            } catch (e) { console.error('Status error:', e); }
+        }
+        
+        async function setManualReminder() {
+            const time = document.getElementById('reminderTime').value;
+            const message = document.getElementById('reminderMessage').value;
+            if (!time || !message) return alert('Enter time and message');
+            
+            const [h, m] = time.split(':');
+            const date = new Date(); date.setHours(h); date.setMinutes(m);
+            const timeStr = date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            
+            try {
+                const res = await fetch('/api/reminder', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({time: timeStr, message: message})
+                });
+                const data = await res.json();
+                if (data.success) {
+                    addMessage(`Reminder set for ${timeStr}`, 'assistant');
+                    if (data.audio_url) {
+                        document.getElementById('responseAudio').src = data.audio_url;
+                        document.getElementById('responseAudio').play();
+                    }
+                }
+            } catch (e) { alert('Error: ' + e.message); }
+        }
+        
+        document.getElementById('startBtn').addEventListener('click', startRecording);
+        document.getElementById('stopBtn').addEventListener('click', stopRecording);
+    </script>
+</body>
+</html>

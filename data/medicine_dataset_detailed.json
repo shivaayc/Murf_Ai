@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Paracetamol",
+    "uses": "Used for fever reduction and mild to moderate pain relief.",
+    "prescription": "OTC – Can be taken without prescription.",
+    "dosage": "500mg to 650mg every 6 hours, not exceeding 4g per day.",
+    "ingredients": ["Paracetamol"],
+    "side_effects": ["Nausea", "Stomach upset"],
+    "contraindications": "Avoid in severe liver disease.",
+    "interactions": "Avoid excessive alcohol intake."
+  },
+  {
+    "name": "Ibuprofen",
+    "uses": "Used for pain, inflammation, and fever control.",
+    "prescription": "OTC but long-term use needs doctor guidance.",
+    "dosage": "200–400mg every 6–8 hours.",
+    "ingredients": ["Ibuprofen"],
+    "side_effects": ["Stomach pain", "Acidity"],
+    "contraindications": "Avoid in gastric ulcer and kidney issues.",
+    "interactions": "Avoid with blood thinners."
+  },
+  {
+    "name": "Diclofenac",
+    "uses": "Used for joint pain, muscle pain, and inflammation.",
+    "prescription": "Prescription required.",
+    "dosage": "50mg twice daily.",
+    "ingredients": ["Diclofenac Sodium"],
+    "side_effects": ["Gastric irritation", "Nausea"],
+    "contraindications": "Not for heart patients.",
+    "interactions": "Avoid combining with NSAIDs."
+  },
+  {
+    "name": "Amoxicillin",
+    "uses": "Broad-spectrum antibiotic for bacterial infections.",
+    "prescription": "Prescription required.",
+    "dosage": "500mg three times a day for 5–7 days.",
+    "ingredients": ["Amoxicillin"],
+    "side_effects": ["Diarrhea", "Rash"],
+    "contraindications": "Avoid in penicillin allergy.",
+    "interactions": "Interacts with oral contraceptives."
+  },
+  {
+    "name": "Azithromycin",
+    "uses": "Used for throat infection, chest infection, and sinusitis.",
+    "prescription": "Prescription required.",
+    "dosage": "500mg on day 1, then 250mg for next 4 days.",
+    "ingredients": ["Azithromycin"],
+    "side_effects": ["Nausea", "Loose motion"],
+    "contraindications": "Avoid in liver dysfunction.",
+    "interactions": "Do not combine with antacids simultaneously."
+  },
+  {
+    "name": "Cetirizine",
+    "uses": "Used for allergy, sneezing, and runny nose.",
+    "prescription": "OTC.",
+    "dosage": "10mg once daily at night.",
+    "ingredients": ["Cetirizine"],
+    "side_effects": ["Drowsiness"],
+    "contraindications": "Avoid alcohol use.",
+    "interactions": "Increases sedation with anxiety medicines."
+  },
+  {
+    "name": "Metformin",
+    "uses": "First-line drug for diabetes control.",
+    "prescription": "Prescription required.",
+    "dosage": "500mg twice daily after meals.",
+    "ingredients": ["Metformin"],
+    "side_effects": ["Stomach upset", "Weakness"],
+    "contraindications": "Avoid in kidney failure.",
+    "interactions": "Avoid with alcohol."
+  },
+  {
+    "name": "Amlodipine",
+    "uses": "Used for high blood pressure and chest pain.",
+    "prescription": "Prescription required.",
+    "dosage": "5mg once daily.",
+    "ingredients": ["Amlodipine"],
+    "side_effects": ["Swelling in feet", "Dizziness"],
+    "contraindications": "Avoid in severe heart failure.",
+    "interactions": "Interacts with other BP medicines."
+  },
+  {
+    "name": "Pantoprazole",
+    "uses": "Reduces acidity and treats GERD.",
+    "prescription": "OTC / Prescription both.",
+    "dosage": "40mg once daily before meals.",
+    "ingredients": ["Pantoprazole"],
+    "side_effects": ["Headache"],
+    "contraindications": "Avoid long-term use without supervision.",
+    "interactions": "Avoid with antifungal medicines."
+  },
+  {
+    "name": "Omeprazole",
+    "uses": "Used for acidity, ulcers, and gastritis.",
+    "prescription": "OTC.",
+    "dosage": "20mg once daily.",
+    "ingredients": ["Omeprazole"],
+    "side_effects": ["Vitamin B12 deficiency on long use"],
+    "contraindications": "Avoid in liver disease.",
+    "interactions": "Interacts with clopidogrel."
+  },
+  {
+    "name": "Ciprofloxacin",
+    "uses": "Antibiotic used for UTI and stomach infections.",
+    "prescription": "Prescription required.",
+       "dosage": "500mg twice daily.",
+    "ingredients": ["Ciprofloxacin"],
+    "side_effects": ["Nausea", "Bitter taste"],
+    "contraindications": "Avoid in tendon issues.",
+    "interactions": "Avoid dairy immediately with dose."
+  }
+]
