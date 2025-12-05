@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Voice Medication Assistant with Murf Falcon & ASR
 
 This is a voice-driven application that:
@@ -8,3 +9,7 @@ This is a voice-driven application that:
 
 ## 🗂 Project Structure
 
+=======
+# Murf_Ai
+A voice-based AI assistant using Deepgram STT and Murf Falcon TTS, designed for fast medical info and natural conversations. It listens to voice queries, fetches medicine uses, dosage, and side effects from a JSON database, and replies in smooth human-like speech through a Flask backend.
+>>>>>>> 290ac9351dee631c2220d3568111acf46bd95ee3
